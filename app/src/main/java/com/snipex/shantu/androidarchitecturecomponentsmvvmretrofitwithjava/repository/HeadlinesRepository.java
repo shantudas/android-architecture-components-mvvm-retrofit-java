@@ -19,6 +19,7 @@ public class HeadlinesRepository {
     }
 
     public MutableLiveData<List<Headline>> getHeadlines() {
+        headlineArrayList.clear();
         getFakeData();
 
         MutableLiveData<List<Headline>> data = new MutableLiveData<>();
