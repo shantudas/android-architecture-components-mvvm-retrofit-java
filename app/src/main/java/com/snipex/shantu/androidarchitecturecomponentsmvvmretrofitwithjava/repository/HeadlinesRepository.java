@@ -1,24 +1,72 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.HeadlinesResponse;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ApiRequest;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HeadlinesRepository {
+    private static final String TAG = HeadlinesRepository.class.getSimpleName();
     private static HeadlinesRepository instance;
-    private ArrayList<Headline> headlineArrayList = new ArrayList<>();
+    private static ApiRequest apiRequest;
+    private List<Headline> headlineArrayList = new ArrayList<>();
 
     public static HeadlinesRepository getInstance() {
         if (instance == null) {
             instance = new HeadlinesRepository();
+            apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
         }
         return instance;
     }
 
-    public MutableLiveData<List<Headline>> getHeadlines() {
+
+    public MutableLiveData<List<Headline>> getHeadlines(String country, String apiKey) {
+        MutableLiveData<List<Headline>> data = new MutableLiveData<>();
+        apiRequest.getHeadlines(country, apiKey).enqueue(new Callback<HeadlinesResponse>() {
+            @Override
+            public void onResponse(Call<HeadlinesResponse> call, Response<HeadlinesResponse> response) {
+                if (response != null) {
+                    Log.i(TAG, "response code :: " + response.code());
+                    Log.i(TAG, "response status :: " + response.body().getStatus());
+
+                    headlineArrayList=response.body().getHeadlines();
+
+                    data.setValue(headlineArrayList);
+                    for (int i=0; i<headlineArrayList.size(); i++){
+                        Headline headline= headlineArrayList.get(i);
+                        Log.i(TAG, headline.toString());
+                    }
+                    Log.i(TAG, String.valueOf(data.getValue().size()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HeadlinesResponse> call, Throwable t) {
+
+            }
+        });
+
+
+
+        return data;
+    }
+
+
+    /**
+     * fake data
+     */
+    public MutableLiveData<List<Headline>> getFakeHeadlines() {
         headlineArrayList.clear();
         getFakeData();
 
