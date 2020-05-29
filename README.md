@@ -5,6 +5,9 @@ This repository contains Android Architecture Components ( LiveData , View Model
 
 In this project we will build a movies artcle app using android architecture components <B>( LiveData and ViewModel )</B> usning <B>MVVM</B> pattern by the help of [Retrofit](https://square.github.io/retrofit/) for consuming rest api data from [News Api](https://newsapi.org/)
 
+For fetching data from [News Api](https://newsapi.org/) you will need an api key.Please register and get api key.
+Then put you api key inside AppConstant file under constants folder.
+
 ## App Features
 * Show list of movies article 
 
