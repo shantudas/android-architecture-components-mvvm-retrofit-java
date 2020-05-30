@@ -31,23 +31,24 @@ public class HeadlinesRepository {
     }
 
 
-    public MutableLiveData<List<Headline>> getHeadlines(String country, String apiKey) {
-        MutableLiveData<List<Headline>> data = new MutableLiveData<>();
+    public MutableLiveData<HeadlinesResponse> getHeadlines(String country, String apiKey) {
+        MutableLiveData<HeadlinesResponse> data = new MutableLiveData<>();
+
         apiRequest.getHeadlines(country, apiKey).enqueue(new Callback<HeadlinesResponse>() {
             @Override
             public void onResponse(Call<HeadlinesResponse> call, Response<HeadlinesResponse> response) {
-                if (response != null) {
+                if (response.body() != null) {
                     Log.i(TAG, "response code :: " + response.code());
                     Log.i(TAG, "response status :: " + response.body().getStatus());
+                    data.setValue(response.body());
+
 
                     headlineArrayList=response.body().getHeadlines();
-
-                    data.setValue(headlineArrayList);
                     for (int i=0; i<headlineArrayList.size(); i++){
                         Headline headline= headlineArrayList.get(i);
                         Log.i(TAG, headline.toString());
                     }
-                    Log.i(TAG, String.valueOf(data.getValue().size()));
+                    Log.i(TAG, String.valueOf(data.getValue().getHeadlines().size()));
                 }
             }
 
@@ -56,9 +57,6 @@ public class HeadlinesRepository {
 
             }
         });
-
-
-
         return data;
     }
 

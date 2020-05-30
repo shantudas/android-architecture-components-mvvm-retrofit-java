@@ -16,7 +16,7 @@ import java.util.List;
 public class HeadlinesViewModel extends ViewModel {
 
     private static final String TAG = HeadlinesViewModel.class.getSimpleName();
-    private MutableLiveData<List<Headline>> headlines;
+    private MutableLiveData<HeadlinesResponse> headlines;
     private HeadlinesRepository repository;
 
     public void init() {
@@ -27,12 +27,12 @@ public class HeadlinesViewModel extends ViewModel {
         repository = HeadlinesRepository.getInstance();
         //headlines = repository.getFakeHeadlines();
         headlines=repository.getHeadlines("us","84a7decf3110498ea372bd16dd0601e8");
-
+        Log.i(TAG, " headlines size :: " + headlines.getValue().getHeadlines().size());
 
     }
 
-    public LiveData<List<Headline>> getAllHeadlines() {
-        Log.i(TAG, " data :: " + headlines);
+    public LiveData<HeadlinesResponse> getAllHeadlines() {
+
         return headlines;
     }
 }

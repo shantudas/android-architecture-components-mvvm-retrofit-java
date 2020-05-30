@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.HeadlinesAdapter;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.HeadlinesResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,35 +28,28 @@ public class HeadlinesFragment extends Fragment {
     private HeadlinesViewModel headlinesViewModel;
     private RecyclerView recyclerViewHeadlines;
     private HeadlinesAdapter adapter;
-    private ArrayList<Headline> headlineArrayList = new ArrayList<>();
+    private List<Headline> headlineArrayList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         headlinesViewModel = ViewModelProviders.of(this).get(HeadlinesViewModel.class);
 
         recyclerViewHeadlines = root.findViewById(R.id.recyclerViewHeadlines);
-
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerViewHeadlines.setLayoutManager(layoutManager);
+        adapter = new HeadlinesAdapter(getContext(), headlineArrayList);
+        recyclerViewHeadlines.setAdapter(adapter);
 
         headlinesViewModel.init();
-        /*headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<List<Headline>>() {
+        /*headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
             @Override
-            public void onChanged(List<Headline> headlines) {
-                adapter.notifyDataSetChanged();
+            public void onChanged(HeadlinesResponse headlinesResponse) {
+                headlineArrayList=headlinesResponse.getHeadlines();
+                if (!headlineArrayList.isEmpty()){
+                    adapter.notifyDataSetChanged();
+                }
             }
         });*/
-        /*headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<List<Headline>>() {
-            @Override
-            public void onChanged(List<Headline> headlines) {
-              adapter.notifyDataSetChanged();
-            }
-        });*/
-
-
-       /* LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerViewHeadlines.setLayoutManager(layoutManager);
-        adapter = new HeadlinesAdapter(getContext(), headlinesViewModel.getAllHeadlines().getValue());
-        recyclerViewHeadlines.setAdapter(adapter);*/
-
 
         return root;
     }
