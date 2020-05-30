@@ -1,13 +1,14 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
@@ -36,7 +37,7 @@ public class MovieArticleAdapter extends RecyclerView.Adapter<MovieArticleAdapte
     public void onBindViewHolder(@NonNull MovieArticleAdapter.ViewHolder viewHolder, int i) {
         Article article=articleArrayList.get(i);
         viewHolder.tvTitle.setText(article.getTitle());
-        viewHolder.tvAuthorAndPublishedAt.setText("-"+article.getAuthor() +" | "+"Piblishetd At: "+article.getPublishedAt());
+        viewHolder.tvAuthorAndPublishedAt.setText("-"+article.getAuthor() +" | "+"Published At: "+article.getPublishedAt());
         viewHolder.tvDescription.setText(article.getDescription());
         Glide.with(context)
                 .load(article.getUrlToImage())
