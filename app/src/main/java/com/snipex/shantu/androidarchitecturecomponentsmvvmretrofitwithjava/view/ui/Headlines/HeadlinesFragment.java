@@ -28,30 +28,42 @@ public class HeadlinesFragment extends Fragment {
     private HeadlinesViewModel headlinesViewModel;
     private RecyclerView recyclerViewHeadlines;
     private HeadlinesAdapter adapter;
-    private List<Headline> headlineArrayList = new ArrayList<>();
+    private ArrayList<Headline> headlineArrayList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        headlinesViewModel = ViewModelProviders.of(this).get(HeadlinesViewModel.class);
 
-        recyclerViewHeadlines = root.findViewById(R.id.recyclerViewHeadlines);
+        initializations(root);
+
+        setUpRecyclerView();
+
+        getNewsHeadlines();
+
+        return root;
+    }
+
+    private void getNewsHeadlines() {
+        headlinesViewModel.init();
+        headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
+            @Override
+            public void onChanged(HeadlinesResponse headlinesResponse) {
+                List<Headline> headlines = headlinesResponse.getHeadlines();
+                headlineArrayList.addAll(headlines);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void setUpRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerViewHeadlines.setLayoutManager(layoutManager);
         adapter = new HeadlinesAdapter(getContext(), headlineArrayList);
         recyclerViewHeadlines.setAdapter(adapter);
+    }
 
-        headlinesViewModel.init();
-        /*headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
-            @Override
-            public void onChanged(HeadlinesResponse headlinesResponse) {
-                headlineArrayList=headlinesResponse.getHeadlines();
-                if (!headlineArrayList.isEmpty()){
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });*/
-
-        return root;
+    private void initializations(View root) {
+        headlinesViewModel = ViewModelProviders.of(this).get(HeadlinesViewModel.class);
+        recyclerViewHeadlines = root.findViewById(R.id.recyclerViewHeadlines);
     }
 
 

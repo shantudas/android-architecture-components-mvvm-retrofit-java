@@ -30,7 +30,6 @@ public class HeadlinesRepository {
         return instance;
     }
 
-
     public MutableLiveData<HeadlinesResponse> getHeadlines(String country, String apiKey) {
         MutableLiveData<HeadlinesResponse> data = new MutableLiveData<>();
 
@@ -54,7 +53,7 @@ public class HeadlinesRepository {
 
             @Override
             public void onFailure(Call<HeadlinesResponse> call, Throwable t) {
-
+                data.setValue(null);
             }
         });
         return data;

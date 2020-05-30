@@ -25,14 +25,11 @@ public class HeadlinesViewModel extends ViewModel {
         }
 
         repository = HeadlinesRepository.getInstance();
-        //headlines = repository.getFakeHeadlines();
         headlines=repository.getHeadlines("us","84a7decf3110498ea372bd16dd0601e8");
-        Log.i(TAG, " headlines size :: " + headlines.getValue().getHeadlines().size());
 
     }
 
     public LiveData<HeadlinesResponse> getAllHeadlines() {
-
         return headlines;
     }
 }
