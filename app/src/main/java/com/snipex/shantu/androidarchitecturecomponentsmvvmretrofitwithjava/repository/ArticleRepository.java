@@ -1,8 +1,9 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.repository;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.ArticleResponse;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ApiRequest;
