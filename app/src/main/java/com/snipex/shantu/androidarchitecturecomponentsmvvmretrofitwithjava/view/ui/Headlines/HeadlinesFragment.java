@@ -47,8 +47,7 @@ public class HeadlinesFragment extends Fragment {
         headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
             @Override
             public void onChanged(HeadlinesResponse headlinesResponse) {
-                List<Headline> headlines = headlinesResponse.getHeadlines();
-                headlineArrayList.addAll(headlines);
+                headlineArrayList.addAll(headlinesResponse.getHeadlines());
                 adapter.notifyDataSetChanged();
             }
         });

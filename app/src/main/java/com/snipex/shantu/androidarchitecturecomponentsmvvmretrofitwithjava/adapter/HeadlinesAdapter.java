@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideContext;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
 
@@ -18,9 +20,9 @@ import java.util.List;
 
 public class HeadlinesAdapter extends RecyclerView.Adapter<HeadlinesAdapter.ViewHolder> {
     private Context context;
-    private List<Headline> headlineArrayList;
+    private ArrayList<Headline> headlineArrayList;
 
-    public HeadlinesAdapter(Context context, List<Headline> headlineArrayList) {
+    public HeadlinesAdapter(Context context, ArrayList<Headline> headlineArrayList) {
         this.context = context;
         this.headlineArrayList = headlineArrayList;
     }
@@ -37,6 +39,7 @@ public class HeadlinesAdapter extends RecyclerView.Adapter<HeadlinesAdapter.View
         Headline headline = headlineArrayList.get(position);
         holder.tvHeadlineTitle.setText(headline.getTitle());
         holder.tvHeadlineDescription.setText(headline.getDescription());
+        Glide.with(context).load(headline.getThumbnail()).into(holder.imgViewThumbnail);
     }
 
     @Override

@@ -40,6 +40,7 @@
             android:id="@+id/imgViewThumbnail"
             android:layout_width="68dp"
             android:layout_height="68dp"
+            android:scaleType="centerCrop"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:background="#e7e7e7" />
