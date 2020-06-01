@@ -15,7 +15,7 @@
         android:id="@+id/navigation_headlines"
         android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.Headlines.HeadlinesFragment"
         android:label="@string/title_headlines"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_headlines" />
 
     <fragment
         android:id="@+id/navigation_interests"

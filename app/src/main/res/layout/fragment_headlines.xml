@@ -3,8 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".view.ui.Headlines.HeadlinesFragment">
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerViewContainerHeadlines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        shimmer:duration="800">
+
+        <include layout="@layout/layout_placeholder_headlines" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHeadlines"
