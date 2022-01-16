@@ -3,7 +3,6 @@ This repository contains Android Architecture Components ( LiveData , View Model
 
 ## About This Project
 
-> blockquote
 > Project is now on development phase
 
 In this project we will build a movies article app using android architecture components <B>( LiveData and ViewModel )</B> usning <B>MVVM</B> pattern by the help of [Retrofit](https://square.github.io/retrofit/) for consuming rest api data from [News Api](https://newsapi.org/)
