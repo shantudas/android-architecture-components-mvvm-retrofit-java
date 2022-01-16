@@ -1,4 +1,4 @@
-# Newsly: Android Architecture Components [mvvvm,java]
+# Newsly: Android Architecture Components using **MVVM** **JAVA**
 This repository contains Android Architecture Components ( LiveData , View Model and MVVM with retrofit for consuming rest api ) 
 
 ## About This Project
