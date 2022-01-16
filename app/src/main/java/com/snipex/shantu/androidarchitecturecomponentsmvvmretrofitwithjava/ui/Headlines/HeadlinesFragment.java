@@ -1,13 +1,14 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.Headlines;
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.Headlines;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,10 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.HeadlinesAdapter;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.constants.AppConstant;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.HeadlinesResponse;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ArticleDtoMapper;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitService;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /*
  * Resources :: for help to create this project
@@ -47,14 +57,49 @@ public class HeadlinesFragment extends Fragment {
 
         initializations(root);
 
-        setUpRecyclerView();
+        //setUpRecyclerView();
 
-        getNewsHeadlines();
+        //getNewsHeadlines();
 
         return root;
     }
 
-    private void getNewsHeadlines() {
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ArticleDtoMapper mapper = new ArticleDtoMapper();
+
+        List<Headline> headlineList = null;
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.github.com/")
+                .build();
+
+        RetrofitService service = retrofit.create(RetrofitService.class);
+
+        Call<HeadlinesResponse> articleResponse = service.getHeadlines("us", AppConstant.API_KEY);
+        articleResponse.enqueue(new Callback<HeadlinesResponse>() {
+            @Override
+            public void onResponse(Call<HeadlinesResponse> call, Response<HeadlinesResponse> response) {
+                if (response.body() != null) {
+
+                    Log.d(TAG, "status :: " + response.body().getStatus());
+                    //mapper.mapToDomainList(response.body().getHeadlineDtoList());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HeadlinesResponse> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+
+    /*private void getNewsHeadlines() {
         headlinesViewModel.init();
         headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
             @Override
@@ -64,7 +109,7 @@ public class HeadlinesFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-    }
+    }*/
 
     private void setUpRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -76,7 +121,7 @@ public class HeadlinesFragment extends Fragment {
     private void initializations(View root) {
         headlinesViewModel = ViewModelProviders.of(this).get(HeadlinesViewModel.class);
         recyclerViewHeadlines = root.findViewById(R.id.recyclerViewHeadlines);
-        shimmerViewContainerHeadlines=root.findViewById(R.id.shimmerViewContainerHeadlines);
+        shimmerViewContainerHeadlines = root.findViewById(R.id.shimmerViewContainerHeadlines);
         shimmerViewContainerHeadlines.startShimmerAnimation();
     }
 

@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface ApiRequest {
+public interface RetrofitService {
 
     @GET("v2/everything/")
     Call<ArticleResponse> getMovieArticles(

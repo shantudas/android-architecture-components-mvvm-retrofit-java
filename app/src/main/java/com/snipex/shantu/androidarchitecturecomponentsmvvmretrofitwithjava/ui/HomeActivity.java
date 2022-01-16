@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view;
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui;
 
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

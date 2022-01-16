@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.HeadlinesResponse;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ApiRequest;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitService;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitRequest;
 
 import java.util.ArrayList;
@@ -19,21 +19,21 @@ import retrofit2.Response;
 public class HeadlinesRepository {
     private static final String TAG = HeadlinesRepository.class.getSimpleName();
     private static HeadlinesRepository instance;
-    private static ApiRequest apiRequest;
+    private static RetrofitService retrofitService;
     private List<Headline> headlineArrayList = new ArrayList<>();
 
     public static HeadlinesRepository getInstance() {
         if (instance == null) {
             instance = new HeadlinesRepository();
-            apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
+            retrofitService = RetrofitRequest.getRetrofitInstance().create(RetrofitService.class);
         }
         return instance;
     }
 
-    public MutableLiveData<HeadlinesResponse> getHeadlines(String country, String apiKey) {
+    /*public MutableLiveData<HeadlinesResponse> getHeadlines(String country, String apiKey) {
         MutableLiveData<HeadlinesResponse> data = new MutableLiveData<>();
 
-        apiRequest.getHeadlines(country, apiKey).enqueue(new Callback<HeadlinesResponse>() {
+        retrofitService.getHeadlines(country, apiKey).enqueue(new Callback<HeadlinesResponse>() {
             @Override
             public void onResponse(Call<HeadlinesResponse> call, Response<HeadlinesResponse> response) {
                 if (response.body() != null) {
@@ -57,13 +57,13 @@ public class HeadlinesRepository {
             }
         });
         return data;
-    }
+    }*/
 
 
     /**
      * fake data
      */
-    public MutableLiveData<List<Headline>> getFakeHeadlines() {
+    /*public MutableLiveData<List<Headline>> getFakeHeadlines() {
         headlineArrayList.clear();
         getFakeData();
 
@@ -85,5 +85,5 @@ public class HeadlinesRepository {
         headlineArrayList.add(new Headline("JCPenney department store files for bankruptcy - Sky News Australia",
                 "JCPenney has become the latest retail casualty of the coronavirus crisis. The iconic United States department store chain has filed for bankruptcy and will c...",
                 "https://i.ytimg.com/vi/m-HGjazxQQw/maxresdefault.jpg"));
-    }
+    }*/
 }

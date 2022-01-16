@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.ArticleResponse;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ApiRequest;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitService;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitRequest;
 
 import retrofit2.Call;
@@ -15,15 +15,15 @@ import retrofit2.Response;
 
 public class ArticleRepository {
     private static final String TAG = ArticleRepository.class.getSimpleName();
-    private ApiRequest apiRequest;
+    private RetrofitService retrofitService;
 
     public ArticleRepository() {
-        apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
+        retrofitService = RetrofitRequest.getRetrofitInstance().create(RetrofitService.class);
     }
 
     public LiveData<ArticleResponse> getMovieArticles(String query, String key) {
         final MutableLiveData<ArticleResponse> data = new MutableLiveData<>();
-        apiRequest.getMovieArticles(query, key)
+        retrofitService.getMovieArticles(query, key)
                 .enqueue(new Callback<ArticleResponse>() {
 
 

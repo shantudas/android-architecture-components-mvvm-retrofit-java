@@ -2,8 +2,7 @@ package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.resp
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ArticleDto;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class HeadlinesResponse {
 
     @SerializedName("articles")
     @Expose
-    private List<Headline> headlines = null;
+    private List<ArticleDto> articleDtoList = null;
 
     public String getStatus() {
         return status;
@@ -24,11 +23,11 @@ public class HeadlinesResponse {
         this.status = status;
     }
 
-    public List<Headline> getHeadlines() {
-        return headlines;
+    public List<ArticleDto> getArticleDtoList() {
+        return articleDtoList;
     }
 
-    public void setHeadlines(List<Headline> headlines) {
-        this.headlines = headlines;
+    public void setArticleDtoList(List<ArticleDto> articleDtoList) {
+        this.articleDtoList = articleDtoList;
     }
 }

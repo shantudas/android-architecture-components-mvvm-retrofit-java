@@ -4,9 +4,9 @@ public class Article {
 
     private String title;
     private String author;
-    private String urlToImage;
+    /*private String urlToImage;
     private String publishedAt;
-    private String description;
+    private String description;*/
 
     public String getTitle() {
         return title;
@@ -24,7 +24,7 @@ public class Article {
         this.author = author;
     }
 
-    public String getUrlToImage() {
+    /*public String getUrlToImage() {
         return urlToImage;
     }
 
@@ -46,5 +46,5 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
-    }
+    }*/
 }

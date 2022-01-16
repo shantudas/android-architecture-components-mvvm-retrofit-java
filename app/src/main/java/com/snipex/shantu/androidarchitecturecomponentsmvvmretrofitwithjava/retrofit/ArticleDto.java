@@ -1,11 +1,24 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model;
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-public class Headline {
+public class ArticleDto {
+    @SerializedName("author")
+    @Expose
     private String author;
+
+    @SerializedName("title")
+    @Expose
     private String title;
+
+    /*@SerializedName("description")
+    @Expose
     private String description;
-    private String thumbnail;
+
+    @SerializedName("urlToImage")
+    @Expose
+    private String thumbnail;*/
 
     public String getAuthor() {
         return author;
@@ -23,7 +36,7 @@ public class Headline {
         this.title = title;
     }
 
-    public String getDescription() {
+    /*public String getDescription() {
         return description;
     }
 
@@ -37,5 +50,5 @@ public class Headline {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.Headlines;
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.Headlines;
 
 import android.util.Log;
 
@@ -24,8 +24,8 @@ public class HeadlinesViewModel extends ViewModel {
             return;
         }
 
-        repository = HeadlinesRepository.getInstance();
-        headlines=repository.getHeadlines("us","84a7decf3110498ea372bd16dd0601e8");
+       /* repository = HeadlinesRepository.getInstance();
+        headlines=repository.getHeadlines("us","84a7decf3110498ea372bd16dd0601e8");*/
 
     }
 
