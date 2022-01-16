@@ -1,16 +1,34 @@
-# Android-Architecture-Components-MVVM-Retrofit-JAVA
+# Newsly: Android Architecture Components [mvvvm,java]
 This repository contains Android Architecture Components ( LiveData , View Model and MVVM with retrofit for consuming rest api ) 
 
 ## About This Project
 
-In this project we will build a movies artcle app using android architecture components <B>( LiveData and ViewModel )</B> usning <B>MVVM</B> pattern by the help of [Retrofit](https://square.github.io/retrofit/) for consuming rest api data from [News Api](https://newsapi.org/)
+> blockquote
+> Project is now on development phase
+
+In this project we will build a movies article app using android architecture components <B>( LiveData and ViewModel )</B> usning <B>MVVM</B> pattern by the help of [Retrofit](https://square.github.io/retrofit/) for consuming rest api data from [News Api](https://newsapi.org/)
 
 For fetching data from [News Api](https://newsapi.org/) you will need an api key.Please register and get api key.
 Then put you api key inside AppConstant file under constants folder.
 
 ## App Features
-* Show list of movies article 
-
+- Showing Headline Articles
+    - Based on location
+    - Business
+    - Entertainment
+    - Sports
+    - Etc.
+- Home
+    - Showing articles based on topics and sources are selected
+- Interests
+    - Sources list
+    - Topic list/Category
+        - Entertainment
+        - Food and Drink
+        - News and Politics
+        - Science and Technology
+        - Sports
+    
 ## App demo 
 <img src="images/app_demo.png">
 
