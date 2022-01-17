@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.home.HomeFragment"
+        android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_headlines"
-        android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.Headlines.HeadlinesFragment"
+        android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.Headlines.HeadlinesFragment"
         android:label="@string/title_headlines"
         tools:layout="@layout/fragment_headlines" />
 
     <fragment
         android:id="@+id/navigation_interests"
-        android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.interests.InterestsFragment"
+        android:name="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.interests.InterestsFragment"
         android:label="@string/title_interests"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

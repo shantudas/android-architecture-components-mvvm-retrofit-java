@@ -8,7 +8,7 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="navigation_dashboard">
+                  <entry key="navigation_headlines">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -32,7 +32,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="navigation_notifications">
+                  <entry key="navigation_interests">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
