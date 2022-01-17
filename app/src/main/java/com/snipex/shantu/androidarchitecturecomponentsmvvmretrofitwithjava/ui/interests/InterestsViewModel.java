@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ui.interests;
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.interests;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -37,11 +37,11 @@ public class MovieArticleAdapter extends RecyclerView.Adapter<MovieArticleAdapte
     public void onBindViewHolder(@NonNull MovieArticleAdapter.ViewHolder viewHolder, int i) {
         Article article=articleArrayList.get(i);
         viewHolder.tvTitle.setText(article.getTitle());
-        viewHolder.tvAuthorAndPublishedAt.setText("-"+article.getAuthor() +" | "+"Published At: "+article.getPublishedAt());
-        viewHolder.tvDescription.setText(article.getDescription());
+        /*viewHolder.tvAuthorAndPublishedAt.setText("-"+article.getAuthor() +" | "+"Published At: "+article.getPublishedAt());
+        viewHolder.tvDescription.setText(article.);
         Glide.with(context)
                 .load(article.getUrlToImage())
-                .into(viewHolder.imgViewCover);
+                .into(viewHolder.imgViewCover);*/
     }
 
     @Override
