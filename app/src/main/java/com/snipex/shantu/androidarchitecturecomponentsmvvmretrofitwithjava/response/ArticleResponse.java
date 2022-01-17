@@ -7,12 +7,15 @@ import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model
 import java.util.List;
 
 public class ArticleResponse {
+
     @SerializedName("status")
     @Expose
     private String status;
+
     @SerializedName("totalResults")
     @Expose
     private Integer totalResults;
+
     @SerializedName("articles")
     @Expose
     private List<Article> articles = null;

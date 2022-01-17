@@ -10,4 +10,8 @@ public class AppConstant {
     public static final String BASE_URL = "https://newsapi.org/";
     public static final String API_KEY = "YOUR_API_KEY";
     public static final String ARTICLE_QUERY = "movies";
+
+    public static class Query{
+        public static final String HEADLINES = "headlines";
+    }
 }
