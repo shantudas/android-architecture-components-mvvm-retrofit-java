@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.HeadlinesResponse;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ArticleDtoMapper;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitService;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,7 +121,7 @@ public class HeadlinesFragment extends Fragment {
     }
 
     private void initializations(View root) {
-        headlinesViewModel = ViewModelProviders.of(this).get(HeadlinesViewModel.class);
+        headlinesViewModel = new ViewModelProvider(this).get(HeadlinesViewModel.class);
         recyclerViewHeadlines = root.findViewById(R.id.recyclerViewHeadlines);
         shimmerViewContainerHeadlines = root.findViewById(R.id.shimmerViewContainerHeadlines);
         shimmerViewContainerHeadlines.startShimmerAnimation();
