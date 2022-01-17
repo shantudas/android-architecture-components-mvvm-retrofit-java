@@ -1,4 +1,4 @@
-# Newsly: Android Architecture Components using **MVVM** **JAVA**
+# Newsly: Android Architecture Components [ MVVM, Java ]
 This repository contains Android Architecture Components ( LiveData , View Model and MVVM with retrofit for consuming rest api ) 
 
 ## About This Project
@@ -12,21 +12,26 @@ Then put you api key inside AppConstant file under constants folder.
 
 ## App Features
 - Showing Headline Articles
-    - Based on location
+    - World(All Country)
     - Business
     - Entertainment
+    - General
+    - Health
+    - Science
     - Sports
-    - Etc.
+    - Technology
 - Home
-    - Showing articles based on topics and sources are selected
+    - Showing articles based on category and sources are selected
 - Interests
-    - Sources list
-    - Topic list/Category
+    - Sources
+    - Category
+        - Business
         - Entertainment
-        - Food and Drink
-        - News and Politics
-        - Science and Technology
+        - General
+        - Health
+        - Science
         - Sports
+        - Technology
     
 ## App demo 
 <img src="images/app_demo.png">
@@ -46,8 +51,8 @@ Anyone can contribute in this project.
 
 ## Authors
 
-**Shantu Chandra Dash** 
-* [GitHub](https://github.com/shantudas)
+**Shantu Chandra Das** 
+* [GitHub](https://github.com/shantudash)
 * [Facebook](https://www.facebook.com/shantudashbd)
 * [Linkedin](https://www.linkedin.com/in/shantudashbd/)
 
