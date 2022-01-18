@@ -15,26 +15,27 @@ import retrofit2.Response;
 
 public class ArticleRepository {
     private static final String TAG = ArticleRepository.class.getSimpleName();
-    private RetrofitService retrofitService;
+    private final RetrofitService apiService;
 
     public ArticleRepository() {
-        retrofitService = RetrofitRequest.getRetrofitInstance().create(RetrofitService.class);
+        apiService = RetrofitRequest.getRetrofitInstance().create(RetrofitService.class);
     }
 
-    public LiveData<ArticleResponse> getMovieArticles(String query, String key) {
+    public LiveData<ArticleResponse> getHeadlines(
+            String country,
+            String key
+    ) {
         final MutableLiveData<ArticleResponse> data = new MutableLiveData<>();
-        retrofitService.getMovieArticles(query, key)
+        apiService.getHeadlines(country, key)
                 .enqueue(new Callback<ArticleResponse>() {
-
-
                     @Override
                     public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
-                        Log.d(TAG, "onResponse response:: " + response);
-
-
-
+                        Log.d(TAG, " onResponse: " + response);
+                        Log.d(TAG, " onResponse: " + response);
                         if (response.body() != null) {
+                            Log.d(TAG, "onResponse: articles" + response.body().getArticles().toString());
                             data.setValue(response.body());
+
 
                             Log.d(TAG, "articles total result:: " + response.body().getTotalResults());
                             Log.d(TAG, "articles size:: " + response.body().getArticles().size());

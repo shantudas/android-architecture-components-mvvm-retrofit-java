@@ -20,7 +20,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:background="@color/colorShimmer" />
+                android:background="@color/shimmer" />
 
 
             <View
@@ -28,13 +28,13 @@
                 android:layout_height="14dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="68dp"
-                android:background="@color/colorShimmer" />
+                android:background="@color/shimmer" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="14dp"
                 android:layout_marginTop="4dp"
-                android:background="@color/colorShimmer" />
+                android:background="@color/shimmer" />
 
         </LinearLayout>
 
@@ -44,7 +44,7 @@
             android:layout_height="68dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:background="@color/colorShimmer" />
+            android:background="@color/shimmer" />
     </RelativeLayout>
 
     <View

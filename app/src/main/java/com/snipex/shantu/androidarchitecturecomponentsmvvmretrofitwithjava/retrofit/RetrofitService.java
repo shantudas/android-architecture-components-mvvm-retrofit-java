@@ -10,6 +10,11 @@ import retrofit2.http.Query;
 
 public interface RetrofitService {
 
+   /**
+    * get query articles
+    *
+    * @param query  query can be movies,
+    */
     @GET("v2/everything/")
     Call<ArticleResponse> getMovieArticles(
             @Query("q") String query,
@@ -17,8 +22,14 @@ public interface RetrofitService {
     );
 
 
+    /**
+     * get headlines from a country
+     *
+     * @param country which country you want to fetch articles from
+     * @param apiKey  api key for news api org
+     */
     @GET("v2/top-headlines/")
-    Call<HeadlinesResponse> getHeadlines(
+    Call<ArticleResponse> getHeadlines(
             @Query("country") String country,
             @Query("apikey") String apiKey
     );

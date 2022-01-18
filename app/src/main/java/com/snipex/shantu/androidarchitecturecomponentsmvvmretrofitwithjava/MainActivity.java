@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.MovieArticleAdapter;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.ArticleAdapter;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view_model.ArticleViewModel;
 
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView my_recycler_view;
     private ProgressBar progress_circular_movie_article;
     private LinearLayoutManager layoutManager;
-    private MovieArticleAdapter adapter;
+    private ArticleAdapter adapter;
     private ArrayList<Article> articleArrayList = new ArrayList<>();
     ArticleViewModel articleViewModel;
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         my_recycler_view.setHasFixedSize(true);
 
         // adapter
-        adapter = new MovieArticleAdapter(MainActivity.this, articleArrayList);
+        adapter = new ArticleAdapter(MainActivity.this, articleArrayList);
         my_recycler_view.setAdapter(adapter);
 
         // View Model

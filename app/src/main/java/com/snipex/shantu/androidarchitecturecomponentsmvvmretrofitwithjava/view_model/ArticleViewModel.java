@@ -10,6 +10,7 @@ import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.repos
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.ArticleResponse;
 
 import static com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.constants.AppConstant.API_KEY;
+import static com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.constants.AppConstant.ARTICLE_COUNTRY;
 import static com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.constants.AppConstant.ARTICLE_QUERY;
 
 public class ArticleViewModel extends AndroidViewModel {
@@ -21,7 +22,7 @@ public class ArticleViewModel extends AndroidViewModel {
         super(application);
 
         articleRepository = new ArticleRepository();
-        this.articleResponseLiveData = articleRepository.getMovieArticles(ARTICLE_QUERY, API_KEY);
+        this.articleResponseLiveData = articleRepository.getHeadlines(ARTICLE_COUNTRY, API_KEY);
     }
 
     public LiveData<ArticleResponse> getArticleResponseLiveData() {

@@ -8,6 +8,7 @@ public class Article {
     private String url;
     private String urlToImage;
     private String publishedAt;
+    private Source source;
 
     public String getAuthor() {
         return author;
@@ -57,6 +58,14 @@ public class Article {
         this.publishedAt = publishedAt;
     }
 
+    public Source getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -66,6 +75,7 @@ public class Article {
                 ", url='" + url + '\'' +
                 ", urlToImage='" + urlToImage + '\'' +
                 ", publishedAt='" + publishedAt + '\'' +
+                ", source=" + source +
                 '}';
     }
 }

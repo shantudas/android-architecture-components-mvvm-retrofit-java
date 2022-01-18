@@ -1,7 +1,6 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ui.Headlines;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,20 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.HeadlinesAdapter;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.constants.AppConstant;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Headline;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.ArticleAdapter;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.ArticleResponse;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.HeadlinesResponse;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ArticleDtoMapper;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitService;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view_model.ArticleViewModel;
 
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 /*
  * Resources :: for help to create this project
@@ -48,10 +42,10 @@ import retrofit2.Retrofit;
 public class HeadlinesFragment extends Fragment {
 
     private static final String TAG = HeadlinesFragment.class.getSimpleName();
-    private HeadlinesViewModel headlinesViewModel;
+    private ArticleViewModel model;
     private RecyclerView recyclerViewHeadlines;
-    private HeadlinesAdapter adapter;
-    private ArrayList<Headline> headlineArrayList = new ArrayList<>();
+    private ArticleAdapter adapter;
+    private ArrayList<Article> articleArrayList;
     ShimmerFrameLayout shimmerViewContainerHeadlines;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,9 +53,9 @@ public class HeadlinesFragment extends Fragment {
 
         initializations(root);
 
-        //setUpRecyclerView();
+        setUpRecyclerView();
 
-        //getNewsHeadlines();
+        getNewsHeadlines();
 
         return root;
     }
@@ -71,7 +65,7 @@ public class HeadlinesFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ArticleDtoMapper mapper = new ArticleDtoMapper();
+        /*ArticleDtoMapper mapper = new ArticleDtoMapper();
 
         List<Headline> headlineList = null;
         Retrofit retrofit = new Retrofit.Builder()
@@ -95,33 +89,47 @@ public class HeadlinesFragment extends Fragment {
             public void onFailure(Call<HeadlinesResponse> call, Throwable t) {
 
             }
-        });
+        });*/
 
 
     }
 
 
-    /*private void getNewsHeadlines() {
-        headlinesViewModel.init();
-        headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
+    private void getNewsHeadlines() {
+    /*    headlinesViewModel.getAllHeadlines().observe(getViewLifecycleOwner(), new Observer<HeadlinesResponse>() {
             @Override
             public void onChanged(HeadlinesResponse headlinesResponse) {
                 shimmerViewContainerHeadlines.setVisibility(View.GONE);
                 headlineArrayList.addAll(headlinesResponse.getHeadlines());
                 adapter.notifyDataSetChanged();
             }
-        });
-    }*/
+        });*/
+
+
+        model.getArticleResponseLiveData().observe(
+                getViewLifecycleOwner(),
+                new Observer<ArticleResponse>() {
+                    @Override
+                    public void onChanged(ArticleResponse articleResponse) {
+                        shimmerViewContainerHeadlines.setVisibility(View.GONE);
+                        articleArrayList.addAll(articleResponse.getArticles());
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+        );
+
+    }
 
     private void setUpRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerViewHeadlines.setLayoutManager(layoutManager);
-        adapter = new HeadlinesAdapter(getContext(), headlineArrayList);
+        adapter = new ArticleAdapter(getContext(), articleArrayList);
         recyclerViewHeadlines.setAdapter(adapter);
     }
 
     private void initializations(View root) {
-        headlinesViewModel = new ViewModelProvider(this).get(HeadlinesViewModel.class);
+        model = new ViewModelProvider(this).get(ArticleViewModel.class);
+        articleArrayList = new ArrayList<>();
         recyclerViewHeadlines = root.findViewById(R.id.recyclerViewHeadlines);
         shimmerViewContainerHeadlines = root.findViewById(R.id.shimmerViewContainerHeadlines);
         shimmerViewContainerHeadlines.startShimmerAnimation();

@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="divider">#e7e7e7</color>
-    <color name="colorShimmer">#e7e7e7</color>
+    <color name="shimmer">#e7e7e7</color>
+    <color name="image_stroke">#e7e7e7</color>
+    <color name="white">#ffffff</color>
 </resources>
