@@ -34,15 +34,12 @@ public class ArticleRepository {
                         Log.d(TAG, " onResponse: " + response);
                         if (response.body() != null) {
                             Log.d(TAG, "onResponse: articles" + response.body().getArticles().toString());
-                            data.setValue(response.body());
-
-
                             Log.d(TAG, "articles total result:: " + response.body().getTotalResults());
                             Log.d(TAG, "articles size:: " + response.body().getArticles().size());
-                            Log.d(TAG, "articles title pos 0:: " + response.body().getArticles().get(0).getTitle());
+
+                            data.setValue(response.body());
                         }
                     }
-
                     @Override
                     public void onFailure(Call<ArticleResponse> call, Throwable t) {
                         data.setValue(null);
