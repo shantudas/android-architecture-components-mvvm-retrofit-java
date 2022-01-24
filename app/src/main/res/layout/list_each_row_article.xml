@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <RelativeLayout
+        <variable
+            name="article"
+            type="com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_toStartOf="@+id/imgViewArticleThumbnail"
-            android:orientation="vertical">
+            android:layout_margin="16dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:layout_toStartOf="@+id/imgViewArticleThumbnail"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvArticleSourceName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{article.source.name}" />
+
+                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/tvArticleSourceName"
+                    android:id="@+id/tvArticleTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{article.title}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvArticleDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{article.description}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
-            <TextView
-                android:id="@+id/tvArticleTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvArticleDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+            <ImageView
+                android:id="@+id/imgViewArticleThumbnail"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_image"
+                android:padding="1dp"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
 
-        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/divider" />
 
-        <ImageView
-            android:id="@+id/imgViewArticleThumbnail"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/bg_image"
-            android:padding="1dp"
-            android:scaleType="fitXY" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/divider" />
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

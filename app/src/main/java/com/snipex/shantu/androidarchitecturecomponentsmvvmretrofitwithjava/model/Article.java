@@ -1,5 +1,13 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+
 public class Article {
 
     private String author;
@@ -65,6 +73,19 @@ public class Article {
     public void setSource(Source source) {
         this.source = source;
     }
+
+    @BindingAdapter("urlToImage")
+    public static void loadImage(ImageView view, String imageUrl) {
+        try{
+            Glide.with(view.getContext())
+                    .load(imageUrl)
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                    .into(view);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public String toString() {
