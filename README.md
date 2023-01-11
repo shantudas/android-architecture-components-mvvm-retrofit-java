@@ -41,10 +41,11 @@ Anyone can contribute in this project.
 
 ## Authors
 
-**Shantu Chandra Dash** 
+**Shantu Chandra Das** 
 * [GitHub](https://github.com/shantudas)
-* [Facebook](https://www.facebook.com/shantudashbd)
-* [Linkedin](https://www.linkedin.com/in/shantudashbd/)
+* [Facebook](https://www.facebook.com/shantuchandradas)
+* [Linkedin](https://www.linkedin.com/in/shantuchandradas/)
+* [Twitter](https://www.linkedin.com/in/shantucdas/)
 
 
 ## License
