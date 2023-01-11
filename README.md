@@ -44,8 +44,8 @@ Anyone can contribute in this project.
 **Shantu Chandra Das** 
 * [GitHub](https://github.com/shantudas)
 * [Facebook](https://www.facebook.com/shantuchandradas)
-* [Linkedin](https://www.linkedin.com/in/shantuchandradas/)
-* [Twitter](https://www.linkedin.com/in/shantucdas/)
+* [Linkedin](https://www.linkedin.com/in/shantuchandradas)
+* [Twitter](https://www.twitter.com/shantucdas)
 
 
 ## License
